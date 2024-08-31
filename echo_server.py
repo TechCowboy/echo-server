@@ -30,11 +30,11 @@ while True:
                     
                     data = conn.recv(1024)
                     if data != b'':
-                        print(data)
+                        print(f'Server Received: {data}  --> sending back')
                         conn.sendall(data)
                     else:
                         break
-                except socket.error as error:
+                except Exception as error:
                     print(error)
                     if error.errno in [errno.EPIPE, errno.ECONNRESET]:
                         break
